@@ -38,13 +38,13 @@ app.get('/'/*'/:idcoin'*/, async (solicitud, respuesta) => {
         const request = await googleSheet.spreadsheets.values.get({
             auth,
             spreadsheetId,
-            range: `${process.env.ID_HOJA_RANGO_ANUAL}`
+            range: `${process.env.ID_HOJA_RANGO}`
         });
         if(request.data.values == undefined){
             await googleSheet.spreadsheets.values.clear({
                 auth,
                 spreadsheetId,
-                range: `${process.env.ID_HOJA_RANGO_ANUAL}`
+                range: `${process.env.ID_HOJA_RANGO}`
             })
         }
         for (let i = 0; i < coins.length; i++) {
@@ -66,11 +66,11 @@ app.get('/'/*'/:idcoin'*/, async (solicitud, respuesta) => {
             await googleSheet.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                range: `${process.env.ID_HOJA_RANGO}`,
                 insertDataOption: 'INSERT_ROWS',
                 valueInputOption: "USER_ENTERED",
                 requestBody: {
-                    "range": `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                    "range": `${process.env.ID_HOJA_RANGO}`,
                     "values": respuestaOHLC
                 }
             });

@@ -28,7 +28,7 @@ exports.handler = async (event) => {
                         const request = (await googleSheet.spreadsheets.values.get({
                             auth,
                             spreadsheetId,
-                            range: `${process.env.ID_HOJA_RANGO_ANUAL}`
+                            range: `${process.env.ID_HOJA_RANGO}`
                         })).data;
                         if (request.values === undefined) {
                             request.values = 0;
@@ -50,17 +50,17 @@ exports.handler = async (event) => {
             (await googleSheet.spreadsheets.values.clear({
                 auth,
                 spreadsheetId,
-                range: `${process.env.ID_HOJA_RANGO_ANUAL}`
+                range: `${process.env.ID_HOJA_RANGO}`
             })).data;
             console.log('Valores de filas eliminados...');
             (await googleSheet.spreadsheets.values.append({
                 auth,
                 spreadsheetId,
-                range: `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                range: `${process.env.ID_HOJA_RANGO}`,
                 insertDataOption: 'OVERWRITE',
                 valueInputOption: "USER_ENTERED",
                 requestBody: {
-                    "range": `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                    "range": `${process.env.ID_HOJA_RANGO}`,
                     "values": datosAlmacenados
                 }
             })).data;
@@ -75,10 +75,10 @@ exports.handler = async (event) => {
             (await googleSheet.spreadsheets.values.update({
                 auth,
                 spreadsheetId,
-                range: `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                range: `${process.env.ID_HOJA_RANGO}`,
                 valueInputOption: "USER_ENTERED",
                 requestBody: {
-                    "range": `${process.env.ID_HOJA_RANGO_ANUAL}`,
+                    "range": `${process.env.ID_HOJA_RANGO}`,
                     "values": datosAlmacenados
                 }
             })).data;
