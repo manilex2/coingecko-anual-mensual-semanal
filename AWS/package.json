@@ -1,0 +1,17 @@
+{
+  "name": "coingecko-server",
+  "version": "1.0.0",
+  "description": "Conexion a coingecko y spreadsheet desde AWS",
+  "main": "app.js",
+  "start": "node --experimental-modules src/index.mjs ",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "Manuel Pereira",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "googleapis": "^89.0.0",
+    "node-fetch": "^2.6.5"
+  }
+}
